@@ -1,0 +1,35 @@
+@media (max-width: 1110px) {
+    .aside {
+        display: none;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .profile__main {
+        flex-direction: column;
+    }
+
+    .profile-form {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .profile__list {
+        width: 100%;
+        column-gap: 0px !important;
+    }
+    .profile__inner {
+        padding: 22px 20px;
+    }
+    .profile-item {
+        width: 80px;
+        height: 25px;
+        font-size: 13px;
+        line-height: 15px;
+    }
+    .profile-item a {
+        padding: 0 !important;
+    }
+}
