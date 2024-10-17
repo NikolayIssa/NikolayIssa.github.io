@@ -309,7 +309,7 @@ function ArrayDataInputSkills (data,list){
         listItem.innerHTML = `
                 ${data.img}
                 <p class="aside__item-link-p">${data.text}</p>
-                <a href="#" class="hidden-link"></a>
+                <a href="#" class="hidden_link"></a>
         `
 
         listAppend.appendChild(listItem);
