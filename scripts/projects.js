@@ -47,7 +47,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         discription:'Сайт разработан в рамках проекта PREAX.',
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2,4],
-        link:'./src-resto-app/index.html',
+        link:'./indexresto.html',
         category: 'html,js,css',
     },
     {
@@ -56,7 +56,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         discription:'Сайт разработан в рамках проекта PREAX.',
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2,4],
-        link:'./src-weather-app/index.html',
+        link:'./index-weather.html',
         category: 'html,js,css',
     },
     {
@@ -65,7 +65,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         discription:'Сайт сверстан с макета FIGMA, для практики.',
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2],
-        link:'./src-organic/index.html',
+        link:'./index-organic.html',
         category: 'html,css',
     },
 ]

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="./src-weather-app/style.css" />
+    <link rel="stylesheet" href="./src-weather-app/media.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main class="main">
+      <header class="header">
+        <div class="header__inner">
+          <div class="header__logo">
+            <a href="/">
+              <img
+                src="./src-weather-app/public/images/Desktop-&-Tablet-Logo.svg"
+                alt="logo"
+                loading="eager"
+                class="header__logo-img"
+              />
+
+              <img
+                src="./src-weather-app/public/images/tablet_logo.svg"
+                alt="logo"
+                loading="eager"
+                class="header__logo-img--mobile"
+              />
+            </a>
+          </div>
+        </div>
+
+        <form action="#" class="header__form" id="searchField">
+          <input
+            type="text"
+            class="header__textfield"
+            name="search"
+            placeholder="Поиск по городу"
+            id="header-search"
+          />
+          <button
+            type="button"
+            class="header__button"
+            id="search-button"
+            form="searchField"
+          >
+            <img
+              src="./src-weather-app/public/icons/search_icons/search.svg"
+              alt="search icon"
+              class="header__button-icon"
+              id="search-icon"
+            />
+          </button>
+        </form>
+      </header>
+
+      <section class="weather">
+        <article class="weather__today">
+          <div class="weather__info">
+            <div class="weather__datetime-city">
+              <h1 class="weather__city">Кременчуг-константиновское</h1>
+              <p class="weather__date">Суббота, 06 января</p>
+              <p class="weather__time">11:29</p>
+            </div>
+          </div>
+
+          <div class="weather__temp">
+            <p class="weather__temp-value">-7&deg;</p>
+          </div>
+
+          <div class="weather__additional-info">
+            <div class="weather__state">
+              <img
+                src="./src-weather-app/public/images/weather_states/weather-state-cloudy.png"
+                alt="weather state"
+                class="weather__state-icon"
+              />
+              <p class="weather__state-text">Облачно</p>
+            </div>
+
+            <p class="weather__feels-like">Ощущается как -11&deg;</p>
+          </div>
+        </article>
+
+        <div class="weather__details">
+          <ul class="weather__details-list">
+            <li class="weather__details-item humidity">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Влажность</h2>
+                <img
+                  class="weather__details-icon"
+                  src="./src-weather-app/public/icons/icons_info/humidity.svg"
+                  alt="ВлажностьIMG"
+                />
+                <p class="weather__details-value">&#37;</p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range weather__details-range--disabled">
+
+                  <div class="weather__details-range--substract">
+                    <div class="weather__details-range--circle">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-min">0&#37;</span>
+                  <span class="weather__details-range-max">100&#37;</span>
+                </div>
+              </div>
+            </li>
+            
+            <li class="weather__details-item pressure">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Давление</h2>
+                <img
+                  class="weather__details-icon"
+                  src="./src-weather-app/public/icons/icons_info/barometr.svg"
+                  alt="ДавлениеImg"
+                />
+                <p class="weather__details-value"></p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range weather__details-range--disabled">
+
+                  <div class="weather__details-range--substract gradient">
+                    <div class="weather__details-range--circle">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-text">Повышенное</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="weather__details-item visibility">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Видимость</h2>
+                <img
+                  class="weather__details-icon"
+                  src="./src-weather-app/public/icons/icons_info/visibility.svg"
+                  alt="ВидимостьImg"
+                />
+                <p class="weather__details-value">75 км</p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range weather__details-range--disabled">
+
+                  <div class="weather__details-range--substract">
+                    <div class="weather__details-range--circle">
+                    </div>
+                  </div>
+
+                </div>
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-text">Нормальная</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="weather__details-item sunrise">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Рассвет</h2>
+                <img
+                  class="weather__details-icon"
+                  src="./src-weather-app/public/icons/icons_info/sunrise.svg"
+                  alt="ВосходImg"
+                />
+                <p class="weather__details-value">8:42</p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-text">Прошло: <span class="range-text time">02:47</span></span>
+                </div>
+              </div>
+            </li>
+
+            <li class="weather__details-item sunset">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Закат</h2>
+                <img
+                  class="weather__details-icon"
+                  src="./src-weather-app/public/icons/icons_info/sunset.svg"
+                  alt="ЗакатImg"
+                />
+                <p class="weather__details-value">16:37</p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-text"> <span class="range-text time"> 05:08</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="weather__details-item wind">
+              <div class="weather__details-values">
+                <h2 class="weather__details-title">Сила ветра</h2>
+                <img
+                  class="weather__details-icon windWay"
+                  src="./src-weather-app/public/icons/icons_info/direction.svg"
+                  alt="Направление"
+                />
+                <p class="weather__details-value">2 м/с</p>
+              </div>
+            
+              <div class="weather__details-range-wrapper">
+                <div class="weather__details-range-labels">
+                  <span class="weather__details-range-text" data-windway="forjs">Северо-западный</span>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </section>
+
+      <section class="slider">
+        <div class="slider__pagination">
+          <h2 class="slider__pagination-h2">
+            Прогноз:
+          </h2>
+
+          <button class="slider__pagination-button day">
+            на 24 часа
+          </button>
+          
+          <button class="slider__pagination-button week">
+            на 5 дней
+          </button>
+        </div>
+
+        <div class="slider__scroll-wrapper">
+          <button class="scroll-wrapper-button --left">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 3L7 12L16 21" stroke="#545454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+          </button>
+
+
+          <article class="slider__items-wrapper">
+            <ul class="slider__items-inner">
+
+            </ul>
+
+            <ul class="slider__items-inner days5">
+
+            </ul>
+          </article>
+          <button class="scroll-wrapper-button --right">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 3L7 12L16 21" stroke="#545454" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+      <footer class="footer">
+        <p class="footer__text">Проект выполнен в рамках стажировки <a class="footer__text-a" target="_blank" href="https://preax.ru">preax</a></p>
+      </footer>
+    </main>
+    
+    <script src="script.js"></script>
+    <script type="module" src="./src-weather-app/data/weatherScript.js"></script>
+    <script src="/data/api.js"></script>
+  </body>
+</html>
