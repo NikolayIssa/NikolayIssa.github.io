@@ -1,4 +1,4 @@
-@import url(./normalize.css);
+@import url(./src-weather/normalize.css);
 
 * {
     margin: 0;
@@ -24,13 +24,13 @@ section {
 
 @font-face {
     font-family: "Raleway-regular";
-    src: url(./public/fonts/raleway-regular.ttf);
+    src: url(./fonts/raleway-regular.ttf);
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Raleway-bold";
-    src: url(./public/fonts/Raleway-Bold.ttf);
+    src: url(./fonts/raleway-bold.ttf);
     font-weight: 700;
 }
 
