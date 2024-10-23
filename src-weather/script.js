@@ -10,10 +10,10 @@
     inputIcon.addEventListener('input', function() {
     if (input.value.length > 0) {
     // Если есть введенный текст, меняем иконку на clear.svg
-    icon.src = './public/icons/search_icons/search.svg';
+    icon.src = './src-weather/public/icons/search_icons/search.svg';
     } else {
     // Если поле пустое, меняем обратно на search.svg
-    icon.src = './public/icons/search_icons/search.svg';
+    icon.src = './src-weather/public/icons/search_icons/search.svg';
     }
     });
 
