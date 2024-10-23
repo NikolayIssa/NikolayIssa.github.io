@@ -1,0 +1,112 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <title>_about-me</title>
+  </head>
+  <body>
+    <div class="body_inner">
+      <header class="header">
+        <div class="header__inner">
+          <div class="header__logo">
+            <a href="#">nikolay-isupov</a>
+          </div>
+
+          <nav class="header__nav">
+            <ul class="header__list">
+              <li class="header__list-item">
+                <a class="header__link" href="/index.html">_hello</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__link" href="/about-me.html">_about-me</a>
+              </li>
+              <li class="header__list-item">
+                <a class="header__link" href="/projects.html">_projects</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header__contact checked">
+          <a href="/contact-me.html" class="active">_contact-me</a>
+        </div>
+      </header>
+
+      <header class="header-mobile">
+        <div class="header-mobile__logo">
+          <a href="#" class="header-mobile__logo-a">nikolay-isupov</a>
+        </div>
+
+        <div class="header-mobile__menu">
+          <button class="header-mobile__button">
+            <svg
+              width="18"
+              height="16"
+              viewBox="0 0 18 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0H18V2H0V0ZM0 7H18V9H0V7ZM0 14H18V16H0V14Z"
+                fill="#607B96"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+    <div class="snakeGame">
+      <div class="snakeGame__field">
+        <div class="snakeGame__wrapper">
+        <canvas id="game" width="248px" height="296px"></canvas>
+        <div class="snakeGame__status">
+            <p>GAME OVER!</p>
+        </div>
+        </div>
+        <div class="snakeGame__start">
+            <button class="snakeGame__button">
+                start-game
+            </button>
+        </div>
+      </div>
+
+      <div class="snakeGame__info">
+        <div class="snakeGame__state">
+            <p>// use keyboard</p>
+            <p>// arrows to play</p>
+            <div class="snakeGame__arrows">
+                <div class="snakeGame__arrows-item up">
+                    <img src="./src/images/snake/arrows/up-arrow.svg" alt="up">
+                </div>
+                <div class="snakeGame__arrows-item left">
+                    <img src="./src/images/snake/arrows/left-arrow.svg" alt="left">
+                </div>
+                <div class="snakeGame__arrows-item down">
+                    <img src="./src/images/snake/arrows/down-arrow.svg" alt="down">
+                </div>
+                <div class="snakeGame__arrows-item right">
+                    <img src="./src/images/snake/arrows/right-arrow.svg" alt="right">
+                </div>
+            </div>
+        </div>
+
+        <div class="snakeGame__score">
+            <p>// food left</p>
+
+            <ul class="snakeGame__score-list">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+                <img src="./src/images/snake/score.svg" alt="" srcset="">
+            </ul>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/snake.js"></script>
+  </body>
+</html>

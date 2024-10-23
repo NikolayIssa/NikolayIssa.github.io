@@ -1,0 +1,18 @@
+@import "./src/styles/reset.css";
+@import "./src/styles/normalize.css";
+
+@import "./src/styles/keyframes";
+@import "./src/styles/fonts";
+@import "./src/styles/mixins";
+@import "./src/styles/variables";
+
+@import "./src/styles/body";
+@import "./src/styles/pages/about-me";
+@import "./src/styles/pages/projects";
+@import "./src/styles/pages/contacts";
+@import "./src/styles/pages/main";
+@import "./src/styles/footer";
+@import "./src/styles/header";
+@import "./src/styles/game/snake";
+
+@import "./src/styles/media";

@@ -1,0 +1,99 @@
+.feedback {
+    height: 100%;
+    @include flex-center-row();
+    align-items: start;
+    background-image: url(./src/images/background/background-blurs.png);
+    &__wrapper {
+        @include flex-center-row();
+        width: 50%;
+        border-right: 1px solid var(--color-lines);
+        height: 100%;
+        align-items: start;
+        justify-content: center;
+    }
+
+    &__form {
+        @include flex-center-column();
+        row-gap: 25px;
+        justify-content: start;
+        padding-top: 100px;
+
+        &-item {
+            @include flex-center-column();
+            row-gap: 10px;
+            color: white;
+            label {
+                color: var(--color-secondaty-gray);
+            }
+
+            input,
+            textarea {
+                background-color: var(--color-primary-darkBlue);
+                border: 1px solid var(--color-lines);
+                padding: 10px 15px;
+                font-size: var(--font-lables16);
+                border-radius: var(--border8);
+                transition: 100ms;
+                min-width: 372px;
+                resize: none;
+                &:focus {
+                    outline: 1px solid var(--color-accent-blumarine);
+                }
+
+                &:active {
+                    outline: 1px solid var(--color-accent-blumarine);
+                }
+            }
+        }
+    }
+
+    &__button {
+        background-color: var(--color-btn);
+        color: white;
+        padding: 10px 14px;
+        border-radius: var(--border8);
+        width: fit-content;
+    }
+
+    .const {
+        color: var(--color-accent-pink);
+    }
+
+    .code {
+        color: var(--color-secondaty-purple);
+    }
+
+    .data {
+        color: var(--color-accent-orange);
+    }
+
+    &__code {
+        @include flex-center-column();
+        align-items: center;
+        padding-top: 100px;
+        &-wrapper {
+            width: 50%;
+        }
+        &-item {
+            color: var(--color-secondaty-gray);
+            width: fit-content;
+
+            pre {
+                line-height: 24px;
+            }
+        }
+    }
+
+    .outputUserName,
+    .outputEmail,
+    .outputMessage,
+    .currentDate {
+        &::before {
+            content: '"';
+        }
+
+        &::after {
+            content: '"';
+        }
+    }
+}

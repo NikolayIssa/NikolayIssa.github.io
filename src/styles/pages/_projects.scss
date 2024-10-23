@@ -1,0 +1,185 @@
+.projects {
+    padding-left: 20px;
+    padding-top: 18px;
+
+    &__list {
+        @include flex-center-column();
+        row-gap: 18px;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-family: var(--ff-fira-reg);
+        color: var(--color-secondaty-gray);
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+        input[type="checkbox"] {
+            appearance: none;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            box-shadow: inset 0 0 5px rgb(0 0 0 / 0.2);
+            border-radius: 2px;
+            border: 1px solid var(--color-secondaty-gray);
+            transition: 100ms;
+            justify-content: center;
+            @include flex-center-row();
+
+            &::after {
+                content: "";
+                position: absolute;
+                background-image: url(./src/images/icons/checkbox.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 0px;
+                height: 0px;
+                font-size: 26px;
+                transition: 100ms;
+                overflow: hidden;
+            }
+
+            &:checked::after {
+                width: 12px;
+                height: 9px;
+                transition: 100ms;
+            }
+
+            &:checked {
+                background: var(--color-secondaty-gray);
+            }
+        }
+
+        input[value="react"],
+        label[for="react"] {
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+
+        label {
+            @include flex-center-row();
+            opacity: 40%;
+            column-gap: 10px;
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
+
+.projects-examples {
+    width: 100%;
+
+    &__list {
+        @include flex-center-row();
+        gap: 40px;
+        flex-wrap: wrap;
+        height: 650px;
+        overflow-y: scroll;
+        padding: 20px;
+        justify-content: center;
+    }
+
+    &__item {
+        @include flex-center-column();
+        justify-content: start;
+        row-gap: 15px;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 200ms;
+        &-inner {
+            width: 370px;
+            @include flex-center-column();
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--color-lines);
+            position: relative;
+        }
+
+        &:hover {
+            opacity: 1;
+            margin-top: -25px;
+        }
+    }
+
+    &__title {
+        font-size: var(--font-lables16);
+        display: flex;
+        column-gap: 10px;
+        h2 {
+            color: var(--color-secondaty-purple);
+            font-family: var(--ff-fira-bold);
+        }
+
+        p {
+            color: var(--color-secondaty-gray);
+            font-family: var(--ff-fira-reg);
+
+            &::before {
+                content: "// ";
+            }
+        }
+    }
+
+    &__img {
+        height: 145px;
+        overflow: hidden;
+        position: relative;
+
+        &-badges {
+            display: flex;
+            justify-content: end;
+            column-gap: 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin-right: 15px;
+            margin-top: 20px;
+            color: var(--color-primary-darkBlue);
+            height: 28px;
+            width: 100%;
+        }
+
+        &-badge {
+            width: 28px;
+            height: 28px;
+            background-color: var(--color-secondaty-badges);
+            justify-content: center;
+            @include flex-center-row();
+            border-radius: var(--border2);
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &__about {
+        border-top: 1px solid var(--color-lines);
+        background-color: var(--color-primary-darkBlue);
+        padding: 31px;
+        @include flex-center-column();
+        row-gap: 20px;
+        p {
+            font-size: var(--font-body18);
+            color: var(--color-secondaty-gray);
+        }
+
+        a {
+            padding: 10px 14px;
+            background-color: var(--color-secondaty-gray);
+            color: white;
+            border-radius: var(--border8);
+            width: fit-content;
+            position: relative;
+            z-index: 2;
+            transition: 200ms;
+            &:hover {
+                background-color: rgba(87, 87, 87, 0.373);
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+:root {
+  --color-primary-black: #01080e;
+  --color-primary-blue: #011627;
+  --color-primary-darkBlue: #011221;
+  --color-secondaty-gray: #607b96;
+  --color-secondaty-aqua: #3c9d93;
+  --color-secondaty-purple: #4d5bce;
+  --color-secondaty-white: #ffffff;
+  --color-secondaty-badges: #86e1f9;
+  --color-accent-orange: #fea55f;
+  --color-accent-blumarine: #43d9ad;
+  --color-accent-peach: #e99287;
+  --color-accent-pink: #c98bdf;
+  --color-lines: #1e2d3d;
+  --color-btn: #1c2b3a;
+  --font-headline62: 62px;
+  --font-subheadline32: 32px;
+  --font-body18: 18px;
+  --font-lables16: 16px;
+  --font-code-snippets14: 14px;
+  --ff-fira-reg: "fira-reg";
+  --ff-fira-bold: "fira-bold";
+  --border8: 8px;
+  --border2: 2px;
+}

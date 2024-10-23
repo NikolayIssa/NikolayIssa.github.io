@@ -1,0 +1,52 @@
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #607b96 #011627;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #011627;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #607b96;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+body {
+    font-family: var(--ff-fira-reg);
+    background-color: var(--color-primary-black);
+    --sb-track-color: #011627;
+    --sb-thumb-color: #607b96;
+}
+
+.body_inner {
+    background-color: var(--color-primary-blue);
+    border-radius: var(--border8);
+    margin: 50px;
+    min-width: 1780px;
+    min-height: 800px;
+    @include border-main();
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    justify-content: space-between;
+    max-width: 1780px;
+    max-height: 800px;
+}
+
+.noborder {
+    border-top: 0px solid transparent;
+}
+
+.hidden-link {
+    position: absolute;
+    inset: 0;
+}

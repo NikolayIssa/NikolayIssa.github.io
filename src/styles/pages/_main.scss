@@ -1,0 +1,75 @@
+.fullscreen {
+    display: flex;
+    justify-content: center;
+    column-gap: 130px;
+    width: 100%;
+    margin-block: 50px;
+    &__info {
+        @include flex-center-column();
+        row-gap: 80px;
+    }
+
+    &__hello-block {
+        @include flex-center-column();
+        color: var(--color-secondaty-white);
+        &-p {
+            font-size: var(--font-body18);
+            line-height: 24px;
+        }
+
+        &-h2 {
+            font-size: var(--font-headline62);
+            line-height: 80px;
+        }
+
+        &-h3 {
+            color: var(--color-secondaty-purple);
+            font-size: var(--font-subheadline32);
+        }
+    }
+
+    &__text-block {
+        @include flex-center-column();
+        color: var(--color-secondaty-gray);
+        font-size: var(--font-lables16);
+        line-height: 21px;
+        &-a {
+            color: var(--color-accent-peach);
+            &:link {
+                color: var(--color-accent-peach);
+            }
+
+            &:visited {
+                color: var(--color-accent-peach);
+            }
+        }
+    }
+
+    .github-link {
+        .const {
+            color: #4d5bce;
+        }
+
+        .constName {
+            color: #43d9ad;
+        }
+    }
+
+    &__game {
+        position: relative;
+        z-index: 2;
+        &::after {
+            content: "";
+            background-image: url(./src/images/background/background-blurs.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+        }
+    }
+}
