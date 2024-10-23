@@ -47,7 +47,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         discription:'Сайт разработан в рамках проекта PREAX.',
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2,4],
-        link:'./indexresto.html',
+        link:'./index-resto.html',
         category: 'html,js,css',
     },
     {

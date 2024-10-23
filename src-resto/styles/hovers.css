@@ -1,0 +1,48 @@
+.footer__header .header__contact .contact-tel:hover {
+    color: var(--whiteGray);
+}
+
+.footer__social-button:hover {
+    opacity: 1;
+    transition: 0.2s ease-in-out;
+}
+
+.advertisment__button:hover {
+    background-color: #fedd2c;
+}
+
+.invisible:hover {
+    opacity: 0.6;
+    transition: 0.2s ease-in-out;
+}
+
+.footer__bottom .header__contaiter .header__list .header__item a:hover {
+    color: var(--absoluteWhite);
+}
+
+.footer__main .header__contaiter .header__nav a:hover {
+    color: var(--whiteGray);
+}
+
+.footer__social-button:hover {
+    margin-bottom: 5px;
+    transition: 0.2s ease-in-out;
+    outline: 1px solid var(--absoluteWhite);
+}
+
+.popular-products__item-button:hover,
+.new-products__item-button:hover,
+.events__button:hover {
+    background-color: var(--ButtonWhiteHover);
+
+    box-shadow:
+        rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: 0.2s ease-in-out;
+}
+
+.menu__item:hover,
+.new-products__item:hover,
+.popular-products__item:hover {
+    scale: 1.02;
+}

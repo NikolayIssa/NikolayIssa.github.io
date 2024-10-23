@@ -1,0 +1,511 @@
+@import url(./normalize.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    list-style-type: none;
+    input {
+        all: unset;
+    }
+}
+
+a:visited {
+    color: var(--fontWhite);
+}
+
+section {
+    width: 100%;
+}
+
+.disable {
+    pointer-events: none;
+}
+
+@font-face {
+    font-family: "Raleway-regular";
+    src: url(./src/fonts/Raleway-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Raleway-bold";
+    src: url(./src/fonts/Raleway-Bold.ttf);
+    font-weight: 700;
+}
+
+.raleway-Raleway-regular {
+    font-family: "Raleway", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.raleway-Raleway-bold {
+    font-family: "Raleway", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --lightGray: #f5f4f466;
+    --lightGrayWhite: rgba(218, 218, 218, 0.4);
+    --fontWhite: #f5f4f4;
+    --hoverColor: #f5f4f4b2;
+    --colorAbsoluteWhite: #ffffff;
+    --colorHoverTransparent: #dadada66;
+    --colorLink: #a6a6a6;
+    --colorTrasparent: transparent;
+    --colorHoverSliderButtons: #dadada;
+
+    --ralewayReg: "Raleway-regular";
+    --ralewayBold: "Raleway-bold";
+
+    --borderRadius: 8px;
+
+    --pading12: 12px;
+    --pading16: 16px;
+    --pading24: 24px;
+    --pading32: 32px;
+
+    --gap8: 8px;
+    --gap12: 12px;
+    --gap16: 16px;
+    --gap24: 24px;
+    --gap32: 32px;
+
+    --fontSize12: 12px;
+    --fontSize14: 14px;
+    --fontSize16: 16px;
+    --fontSize20: 20px;
+    --fontSize24: 24px;
+
+    --maskPosition: 75%;
+}
+
+body {
+    max-width: 1280px;
+    background-image: url(./public/images/background-main@1x.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 32px auto;
+    font-variant-numeric: lining-nums;
+    align-items: center;
+}
+
+.main {
+    width: 1120px;
+    backdrop-filter: blur(20px);
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--pading32);
+    box-sizing: border-box;
+    font-family: var(--ralewayReg);
+}
+
+.header__logo {
+    height: 48px;
+}
+
+.header__logo-img {
+    height: 100%;
+}
+
+.header__form {
+    width: 506px;
+    display: flex;
+    align-items: center;
+    background-color: var(--lightGray);
+    border-radius: var(--borderRadius);
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding-right: 16px;
+    gap: var(--gap16);
+}
+
+.header__textfield {
+    font-size: var(--fontSize20);
+    line-height: 1.2;
+    background-color: transparent;
+    width: 100%;
+    height: 48px;
+    padding-left: 16px;
+}
+
+.header__logo-img--mobile {
+    display: none;
+}
+
+.header__form.active {
+    background-color: var(--hoverColor);
+}
+
+.header__button {
+    background-color: transparent;
+    width: 24px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.header__button-icon {
+    height: 24px;
+}
+
+.header__button:hover {
+    cursor: pointer;
+}
+
+.header__form:hover {
+    background-color: var(--hoverColor);
+}
+
+.weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 472px;
+    padding: var(--pading32);
+    gap: var(--gap16);
+    box-sizing: border-box;
+}
+
+.weather__today {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: var(--fontWhite);
+    padding: 8px;
+    justify-content: space-between;
+    width: auto;
+    flex-grow: 1;
+}
+
+.weather__info {
+    width: 100%;
+}
+
+.weather__datetime-city {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap8);
+    font-size: var(--fontSize20);
+    line-height: 1.2;
+}
+
+.weather__city {
+    font-family: var(--ralewayBold);
+    font-size: var(--fontSize24);
+    line-height: 32px;
+    margin: 0;
+}
+
+.weather__date,
+.weather__time {
+    font-family: var(--ralewayReg);
+}
+
+.weather__temp {
+    font-size: 112px;
+    line-height: 1;
+    font-family: var(--ralewayBold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather__additional-info {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ralewayReg);
+    font-size: var(--fontSize20);
+    line-height: 1.2;
+    position: relative;
+    row-gap: var(--gap8);
+}
+
+.weather__state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: var(--gap8);
+}
+
+.weather__state-icon {
+    width: 24px;
+    aspect-ratio: 1;
+}
+
+.weather__state-text,
+.weather__feels-like {
+    font-size: var(--fontSize20);
+    line-height: 1.2;
+}
+.weather__details-list {
+    display: grid;
+    grid-template-columns: repeat(3, 158px);
+    grid-template-rows: repeat(2, 196px);
+    gap: var(--gap16);
+}
+
+.weather__details-item {
+    background-color: var(--lightGray);
+    border-radius: var(--borderRadius);
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap16);
+    padding: var(--pading16);
+    box-sizing: border-box;
+    font-family: var(--ralewayReg);
+}
+
+.weather__details-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: var(--gap16);
+}
+
+.weather__details-title {
+    font-size: var(--fontSize16);
+    line-height: 1.25;
+    font-family: var(--ralewayBold);
+}
+
+.weather__details-value {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.windWay {
+    width: 32px;
+    aspect-ratio: 1;
+}
+.weather__details-item .weather__details-range-labels {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.weather__details-range-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap8);
+    text-align: center;
+}
+
+.weather__details-range-labels {
+    font-size: var(--fontSize12);
+    line-height: 16px;
+}
+
+.weather__details-range-text {
+    width: 100%;
+    text-align: center;
+}
+
+.weather__details-range {
+    width: 100%;
+    display: flex;
+}
+
+.weather__details-range--substract {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: var(--colorHoverTransparent);
+    border-radius: var(--borderRadius);
+    mask: radial-gradient(
+        circle 6px at calc(var(--maskPosition, 50%) + 4px),
+        var(--fontWhite) 4px,
+        transparent 4px,
+        transparent 6px,
+        var(--colorAbsoluteWhite) 6px
+    );
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: var(--maskPosition, 50%);
+        display: block;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        background: var(--fontWhite);
+    }
+}
+
+.gradient {
+    background: radial-gradient(
+        50% 9453.13% at 50% 50%,
+        rgba(84, 84, 84, 0.4) 0%,
+        rgba(138, 138, 138, 0.4) 45.12%,
+        #dadada 100%,
+        rgba(218, 218, 218, 0.4) 100%
+    );
+}
+
+.slider {
+    height: 192px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--ralewayBold);
+    align-items: center;
+    padding: var(--pading32);
+    row-gap: var(--gap32);
+    box-sizing: border-box;
+}
+
+.slider__pagination {
+    width: 94.28571428571429%;
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--gap32);
+}
+
+.slider__pagination-h2 {
+    color: var(--fontWhite);
+    font-size: var(--fontSize24);
+    line-height: 32px;
+}
+
+.slider__pagination-button {
+    color: var(--colorLink);
+    font-size: var(--fontSize16);
+    line-height: 20px;
+    background-color: var(--colorTrasparent);
+    font-variant-numeric: lining-nums;
+    padding-top: 9px;
+    border-bottom: 2px solid var(--colorTrasparent);
+    transition: 0.2s ease-in-out;
+}
+
+.slider__pagination-button:hover,
+.select {
+    cursor: pointer;
+    color: var(--fontWhite);
+    border-bottom: 2px solid var(--fontWhite);
+    transition: 0.2s ease-in-out;
+}
+
+.slider__scroll-wrapper {
+    display: flex;
+    flex-direction: row;
+    column-gap: var(--gap32);
+    width: 94.28571428571429%;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider__items-wrapper {
+    width: 83.33333333333333%;
+    scroll-behavior: smooth;
+    mask: linear-gradient(90deg, #000 95%, transparent);
+}
+
+.slider__items-inner {
+    width: auto;
+    display: grid;
+    column-gap: var(--gap16);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-auto-flow: column;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.days5 {
+    display: none;
+}
+
+.items-inner__item {
+    display: flex;
+    min-width: max-content;
+    align-items: center;
+    flex-direction: row;
+    column-gap: var(--gap16);
+    padding: var(--pading16);
+    border-radius: var(--borderRadius);
+    background-color: var(--lightGray);
+}
+
+.today {
+    background-color: #f5f4f4b7;
+}
+
+.items-inner__item-p {
+    font-family: var(--ralewayReg);
+    font-size: var(--fontSize16);
+    line-height: 20px;
+}
+
+.items-inner__item-img {
+    width: 32px;
+    aspect-ratio: 1;
+}
+
+.scroll-wrapper-button {
+    height: fit-content;
+    padding: 12px 16px;
+    border-radius: var(--borderRadius);
+    background-color: var(--lightGray);
+    opacity: 50%;
+}
+
+.active:hover {
+    background-color: var(--colorHoverSliderButtons);
+    cursor: pointer;
+}
+
+.active {
+    opacity: 100%;
+}
+
+.--right svg {
+    transform: scaleX(-1);
+}
+
+footer {
+    height: 84px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__text {
+    font-family: var(--ralewayReg);
+    font-size: var(--fontSize16);
+    line-height: 20px;
+    color: var(--fontWhite);
+    width: 100%;
+    padding: var(--pading32);
+    text-align: center;
+}
+
+.footer__text-a {
+    text-transform: uppercase;
+}

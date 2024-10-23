@@ -1,0 +1,44 @@
+.footer__main .header__contaiter .header__nav a,
+.footer__main .header__contaiter .header__nav a:link,
+.footer__main .header__contaiter .header__nav a:visited {
+    text-decoration: none;
+    color: var(--absoluteWhite);
+    line-height: 24px;
+}
+
+.footer__main .header__contaiter .header__nav a:hover {
+    color: var(--whiteGray);
+}
+
+.footer__bottom .header__contaiter .header__list .header__item a,
+.footer__bottom .header__contaiter .header__list .header__item a:link,
+.footer__bottom .header__contaiter .header__list .header__item a:visited {
+    color: var(--whiteGray);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.menu__link,
+.menu__link:link,
+.menu__link:visited {
+    font-size: var(--fontSize24);
+    line-height: 32px;
+    z-index: 1;
+    color: var(--absoluteWhite);
+}
+
+.link-style,
+.link-style:link,
+.link-style:visited {
+    font-size: var(--fontSize32);
+    line-height: 40px;
+    z-index: 1;
+    color: var(--absoluteWhite);
+}
+
+.preax__link-a,
+.preax__link-a:link,
+.preax__link-a:visited {
+    text-decoration: underline;
+    color: var(--whiteGray);
+}
