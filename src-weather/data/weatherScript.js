@@ -24,7 +24,7 @@
                     console.log('Город: ' + city);
 
                     // После получения города делаем запрос на погоду
-                    const weatherUrl = `http://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(city)}&days=5&aqi=no&alerts=no`;
+                    const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(city)}&days=5&aqi=no&alerts=no`;
 
                     const response = await fetch(weatherUrl);
 
