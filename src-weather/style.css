@@ -24,13 +24,13 @@ section {
 
 @font-face {
     font-family: "Raleway-regular";
-    src: url(./src/fonts/Raleway-Regular.ttf);
+    src: url(./public/fonts/raleway-regular.ttf);
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Raleway-bold";
-    src: url(./src/fonts/Raleway-Bold.ttf);
+    src: url(./public/fonts/Raleway-Bold.ttf);
     font-weight: 700;
 }
 
