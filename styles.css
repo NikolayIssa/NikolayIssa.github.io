@@ -926,6 +926,9 @@ body {
 .feedback__code .costilSix {
   margin-right: 34px;
 }
+.feedback__code .costilSix2 {
+  width: 300px;
+}
 .feedback .outputUserName::before,
 .feedback .outputEmail::before,
 .feedback .outputMessage::before,
