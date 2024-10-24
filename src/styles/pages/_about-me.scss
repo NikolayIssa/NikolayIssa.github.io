@@ -38,7 +38,9 @@
             font-size: var(--font-lables16);
             cursor: pointer;
         }
+    }
 
+    .openable {
         &::before {
             display: block;
             content: "";
@@ -48,6 +50,17 @@
             background-repeat: no-repeat;
             background-position: center;
             margin-right: 4px;
+        }
+    }
+
+    .inner {
+        height: 20px;
+        overflow: hidden;
+        margin-left: 20px;
+        opacity: 0.4;
+        transition: 200ms ease-in-out;
+        svg {
+            color: var(--color-secondaty-gray);
         }
     }
 
@@ -61,6 +74,7 @@
 
     .active {
         color: var(--color-secondaty-white);
+        opacity: 1;
     }
 
     &__info {
@@ -72,6 +86,7 @@
         &-header {
             border-bottom: 1px solid var(--color-lines);
             display: flex;
+            min-height: 42px;
         }
     }
 

@@ -93,7 +93,7 @@
             <h2 class="about-me__personal-info subheadline">personal-info</h2>
 
             <div class="about-me__navigation">
-              <div class="about-me__accordeon">
+              <div class="about-me__accordeon openable">
                 <div class="about-me__accordeon-folder">
                   <svg
                     width="16"
@@ -111,7 +111,32 @@
                 <p class="about-me__accordeon-p bio active">bio</p>
               </div>
 
-              <div class="about-me__accordeon">
+              <div
+                class="about-me__accordeon inner active"
+                data-accordeon="bio"
+              >
+                <div class="about-me__accordeon-folder">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M21 9V20.9925C21 21.5511 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.44694 2 3.99826 2H14V8C14 8.55228 14.4477 9 15 9H21ZM21 7H16V2.00318L21 7ZM8 7V9H11V7H8ZM8 11V13H16V11H8ZM8 15V17H16V15H8Z"
+                    ></path>
+                  </svg>
+                </div>
+                <p
+                  class="about-me__accordeon-p bioB browse"
+                  data-accordeon="bio"
+                >
+                  personal-info.txt
+                </p>
+              </div>
+
+              <div class="about-me__accordeon openable">
                 <div class="about-me__accordeon-folder">
                   <svg
                     width="16"
@@ -127,6 +152,31 @@
                   </svg>
                 </div>
                 <p class="about-me__accordeon-p skills active">skills</p>
+              </div>
+
+              <div
+                class="about-me__accordeon inner active"
+                data-accordeon="skills"
+              >
+                <div class="about-me__accordeon-folder">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M21 9V20.9925C21 21.5511 20.5552 22 20.0066 22H3.9934C3.44495 22 3 21.556 3 21.0082V2.9918C3 2.45531 3.44694 2 3.99826 2H14V8C14 8.55228 14.4477 9 15 9H21ZM21 7H16V2.00318L21 7ZM8 7V9H11V7H8ZM8 11V13H16V11H8ZM8 15V17H16V15H8Z"
+                    ></path>
+                  </svg>
+                </div>
+                <p
+                  class="about-me__accordeon-p skillsS browse"
+                  data-accordeon="skills"
+                >
+                  _skills
+                </p>
               </div>
             </div>
 

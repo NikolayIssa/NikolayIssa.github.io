@@ -116,7 +116,6 @@
         searchBtn.addEventListener('click', function() {
             const inputValue = input.value; // Удаляем пробелы в начале и конце строки
             // Формируем селектор класса для вывода значения
-
             let city = inputValue;
 
             async function Searched(position) {

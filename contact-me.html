@@ -168,7 +168,10 @@
 
             <div class="feedback">
               <div class="feedback__wrapper">
-                <form action="" class="feedback__form">
+                <form
+                  action="./src/mailsend/send_email.php"
+                  class="feedback__form"
+                >
                   <div class="feedback__form-item">
                     <label for="UserName">_name:</label>
                     <input
@@ -196,6 +199,7 @@
                       name="Message"
                       rows="5"
                       class="feedback__input"
+                      maxlength="300"
                       required
                     ></textarea>
                   </div>
@@ -215,7 +219,7 @@
 3     <span class="const">const</span> <span class="code">message</span>  <span class="const">=</span> { 
 4     <span class="code">name</span>: <span class="data outputUserName">Hello my name is</span> , 
 5     <span class="code">email</span>: <span class="data outputEmail"></span>,
-6     <span class="code">message</span>: <span class="data outputMessage"></span>, 
+     <p class="costil"><span class="costilSix">6</span><span><span class="code">message</span>: <span class="data outputMessage"></span></span></p> 
 7     <span class="code">date</span>: <span class="data currentDate">Thu 21 Apr</span> 
 8     }
 9
@@ -225,7 +229,6 @@
 
                     </pre>
                   </li>
-                  <li class="feedback__code-item"></li>
                 </ul>
               </div>
             </div>
