@@ -25,7 +25,7 @@
             padding: 15px 32px;
             color: var(--color-lines);
             border-right: 1px solid var(--color-lines);
-            opacity: 0.7;
+            opacity: 0.8;
 
             &:hover {
                 cursor: pointer;
@@ -47,6 +47,7 @@
 
         &:hover {
             background-color: var(--color-primary-darkBlue);
+            border-radius: 0 8px 0 0;
         }
     }
 

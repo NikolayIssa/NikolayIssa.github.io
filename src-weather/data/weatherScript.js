@@ -1,157 +1,81 @@
-        async function getData() {
+async function getData() {
+    try {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        } else {
+            console.log('Геолокация не поддерживается этим браузером');
+        }
+
+        async function successCallback(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            console.log('Широта: ' + latitude + ', Долгота: ' + longitude);
+
+            const geocodeUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}`;
             try {
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                } else {
-                    console.log('Геолокация не поддерживается этим браузером');
-                }
-            
-                async function successCallback(position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    console.log('Широта: ' + latitude + ', Долгота: ' + longitude);
-
-                    // Запрашиваем город по координатам
-                    const geocodeUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=6718b3c5c5047124975608jbed478d9`;
-                    
-
-                    try {
-                        const geocodeResponse = await fetch(geocodeUrl);
-                        const geocodeData = await geocodeResponse.json();
-                        let city = geocodeData.address.city || 'Moscow'; // Если не удалось получить город, используем "Moscow"
-                        console.log('Город: ' + city);
-
-                        // После получения города делаем запрос на погоду
-                        const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(city)}&days=5&aqi=no&alerts=no`;
-
-                        const response = await fetch(weatherUrl);
-
-                        if (!response.ok) {
-                            throw new Error('Ошибка запроса');
-                        }
-                        
-                        const data = await response.json();
-                        console.log(data); // Используйте данные здесь
-                        SomeTest(data);
-                        setPressureInfo(data);
-                        setHumidityInfo(data);
-                        sliderOptions(data);
-                        setVisibilityInfo(data);
-                        setSunriseAndSunset(data);  
-                        windIconChange(data);
-                        setWindSpeed(data);
-                        sliderOptions(data);
-
-                        const weatherResponse = await fetch(weatherUrl);
-                        if (!weatherResponse.ok) {
-                            throw new Error('Ошибка запроса погоды');
-                        }
-
-                        const weatherData = await weatherResponse.json();
-                    
-                    // Здесь ты можешь работать с данными о погоде
-                    } catch (error) {
-                        console.error('Ошибка:', error);
-                    }
-                }
-
-                function errorCallback(error) {
-                    console.log('Ошибка при получении геопозиции: ' + error.message);
-                    async function defaultPos(position) {
-                        try {
-                            let city = 'Москва'; // Если не удалось получить город, используем "Moscow"
-                            console.log('Город: ' + city);
-        
-                            // После получения города делаем запрос на погоду
-                            const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(city)}&days=5&aqi=no&alerts=no`;
-        
-                            const response = await fetch(weatherUrl);
-        
-                            if (!response.ok) {
-                                throw new Error('Ошибка запроса');
-                            }
-                            
-                            const data = await response.json();
-                            SomeTest(data);
-                            setPressureInfo(data);
-                            setHumidityInfo(data);
-                            sliderOptions(data);
-                            setVisibilityInfo(data);
-                            setSunriseAndSunset(data);  
-                            windIconChange(data);
-                            setWindSpeed(data);
-                            sliderOptions(data);
-        
-                            const weatherResponse = await fetch(weatherUrl);
-                            if (!weatherResponse.ok) {
-                                throw new Error('Ошибка запроса погоды');
-                            }
-                        
-                        // Здесь ты можешь работать с данными о погоде
-                        } catch (error) {
-                            console.error('Ошибка:', error);
-                        }
-                    }
-
-                    defaultPos();
-                }
-
+                const geocodeResponse = await fetch(geocodeUrl);
+                const geocodeData = await geocodeResponse.json();
+                let city = geocodeData.address.city || 'Москва'; // Если не удалось получить город, используем "Москва"
+                console.log('Город: ' + city);
+                
+                // Запрашиваем погоду
+                await fetchWeatherData(city);
             } catch (error) {
-                console.error('Ошибка:', error);
+                console.error('Ошибка геокодирования:', error);
             }
         }
-        getData();
 
-        const input = document.getElementById('header-search');
-        const searchBtn = document.getElementById('search-icon');
+        function errorCallback(error) {
+            console.log('Ошибка при получении геопозиции: ' + error.message);
+            fetchWeatherData('Москва'); // По умолчанию используем "Москва"
+        }
 
-        searchBtn.addEventListener('click', function() {
-            const inputValue = input.value; // Удаляем пробелы в начале и конце строки
-            // Формируем селектор класса для вывода значения
-            let city = inputValue;
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
 
-            const loadingMessage = document.getElementById('loader');
+async function fetchWeatherData(city) {
+    const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(city)}&days=5&aqi=no&alerts=no`;
+    const loadingMessage = document.getElementById('loader');
+    loadingMessage.style.display = 'flex';
+    
+    try {
+        const response = await fetch(weatherUrl);
+        if (!response.ok) {
+            throw new Error('Ошибка запроса');
+        }
+        const data = await response.json();
+        SomeTest(data);
+        setPressureInfo(data);
+        setHumidityInfo(data);
+        sliderOptions(data);
+        setVisibilityInfo(data);
+        setSunriseAndSunset(data);  
+        windIconChange(data);
+        setWindSpeed(data);
+    } catch (error) {
+        console.error('Ошибка:', error);
+    } finally {
+        loadingMessage.style.display = 'none'; // Скрываем сообщение "Загрузка..."
+    }
+}
 
-            async function Searched(position) {
-                loadingMessage.style.display = 'flex';
-                try {
-                    // После получения города делаем запрос на погоду
-                    const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=6e40db2d40af4681bce15022242210&q=${encodeURIComponent(position)}&days=5&aqi=no&alerts=no`;
+getData();
 
-                    const response = await fetch(weatherUrl);
+const input = document.getElementById('header-search');
+const searchBtn = document.getElementById('search-icon');
 
-                    if (!response.ok) {
-                        throw new Error('Ошибка запроса');
-                    }
-                    
-                    const data = await response.json();
-                    SomeTest(data);
-                    setPressureInfo(data);
-                    setHumidityInfo(data);
-                    sliderOptions(data);
-                    setVisibilityInfo(data);
-                    setSunriseAndSunset(data);  
-                    windIconChange(data);
-                    setWindSpeed(data);
-                    sliderOptions(data);
+searchBtn.addEventListener('click', function() {
+    const inputValue = input.value.trim(); // Удаляем пробелы в начале и конце строки
+    fetchWeatherData(inputValue); // Передаем введенный город
+});
 
-                    const weatherResponse = await fetch(weatherUrl);
-                    if (!weatherResponse.ok) {
-                        throw new Error('Ошибка запроса погоды');
-                    }
-                
-                // Здесь ты можешь работать с данными о погоде
-                } catch (error) {
-                    console.error('Ошибка:', error);
-                } finally {
-                    loadingMessage.style.display = 'none'; // Скрываем сообщение "Загрузка..." после завершения запроса
-                }
 
-            }
 
-            Searched(city);
-        });
+
+
+
 
     let SomeTest = (data) => {
         const humidityItem = document.querySelector('.weather__city');

@@ -17,6 +17,9 @@
     --color-gradient-snake: #1755531f;
     --color-gradient-snake-second: #43d9ad22;
     --color-border-color: #0c1616;
+    --color-text-snake: #ffffff;
+
+    --color-buttons-snake: #000000;
 
     --color-lines: #1e2d3d;
     --color-btn: #1c2b3a;
@@ -37,16 +40,18 @@
 .dark {
     --color-primary-blue: #ffffff;
     --color-primary-black: #6f6f6f;
-    --color-primary-darkBlue: #e8e8e8;
+    --color-primary-darkBlue: #e8dad1;
 
-    --color-secondaty-white: #333333;
+    --color-accent-blumarine: #305252;
+
+    --color-secondaty-white: #488286;
     --color-secondaty-gray: #000000;
 
     --color-gradient-snake: #00000079;
-    --color-gradient-snake-second: #43d9ac;
-    --color-border-color: #43d9ac;
+    --color-gradient-snake-second: #ffffff;
+    --color-border-color: #2c3531;
 
-    --color-lines: #43d9ad;
+    --color-lines: #77878b;
     --color-btn: #d4d4d4;
 
     color-scheme: dark;

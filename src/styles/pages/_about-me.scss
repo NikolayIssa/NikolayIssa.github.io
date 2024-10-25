@@ -177,7 +177,7 @@
 
     &__skills-item {
         width: 70%;
-        padding: 18px 27px;
+        padding: 18px 0px;
         display: grid;
         grid-template-rows: auto, auto, auto;
         row-gap: 18px;
@@ -213,6 +213,44 @@
 
     .close {
         z-index: 1;
+    }
+
+    &__discription {
+        border: 1px solid var(--color-lines);
+        border-radius: var(--border8);
+        position: relative;
+        color: var(--color-secondaty-gray);
+        padding: 2.5px 5px 10px 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        transition: 500ms ease-in-out;
+        &-title {
+            line-height: 25px;
+            font-family: var(--ff-fira-bold);
+        }
+
+        &-text {
+            &::before {
+                content: "*";
+            }
+        }
+    }
+
+    &__discription-arrow {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 25px;
+        aspect-ratio: 1;
+        transform: rotate(90deg);
+        transition: 200ms ease-in-out;
+        filter: drop-shadow(0px 0px 18px var(--color-accent-blumarine));
+        &:hover {
+            transform: rotate(0deg);
+            cursor: pointer;
+        }
     }
 }
 

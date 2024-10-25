@@ -49,6 +49,8 @@
   --color-gradient-snake: #1755531f;
   --color-gradient-snake-second: #43d9ad22;
   --color-border-color: #0c1616;
+  --color-text-snake: #ffffff;
+  --color-buttons-snake: #000000;
   --color-lines: #1e2d3d;
   --color-btn: #1c2b3a;
   --font-headline62: 62px;
@@ -66,13 +68,14 @@
 .dark {
   --color-primary-blue: #ffffff;
   --color-primary-black: #6f6f6f;
-  --color-primary-darkBlue: #e8e8e8;
-  --color-secondaty-white: #333333;
+  --color-primary-darkBlue: #e8dad1;
+  --color-accent-blumarine: #305252;
+  --color-secondaty-white: #488286;
   --color-secondaty-gray: #000000;
   --color-gradient-snake: #00000079;
-  --color-gradient-snake-second: #43d9ac;
-  --color-border-color: #43d9ac;
-  --color-lines: #43d9ad;
+  --color-gradient-snake-second: #ffffff;
+  --color-border-color: #2c3531;
+  --color-lines: #77878b;
   --color-btn: #d4d4d4;
   color-scheme: dark;
 }
@@ -132,7 +135,7 @@ body {
   max-height: 800px;
   margin: 50px;
   width: 1700px;
-  min-width: 1340px;
+  min-width: 1540px;
   min-height: 800px;
   border: 1px solid var(--color-lines);
   display: -ms-grid;
@@ -441,7 +444,7 @@ body {
 }
 .about-me__skills-item {
   width: 70%;
-  padding: 18px 27px;
+  padding: 18px 0px;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: auto, auto, auto;
@@ -487,6 +490,49 @@ body {
 }
 .about-me .close {
   z-index: 1;
+}
+.about-me__discription {
+  border: 1px solid var(--color-lines);
+  border-radius: var(--border8);
+  position: relative;
+  color: var(--color-secondaty-gray);
+  padding: 2.5px 5px 10px 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 10px;
+  -webkit-transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out;
+}
+.about-me__discription-title {
+  line-height: 25px;
+  font-family: var(--ff-fira-bold);
+}
+.about-me__discription-text::before {
+  content: "*";
+}
+.about-me__discription-arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25px;
+  aspect-ratio: 1;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  -webkit-filter: drop-shadow(0px 0px 18px var(--color-accent-blumarine));
+          filter: drop-shadow(0px 0px 18px var(--color-accent-blumarine));
+}
+.about-me__discription-arrow:hover {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  cursor: pointer;
 }
 
 .subheadline {
@@ -1055,7 +1101,7 @@ body {
   color: #4d5bce;
 }
 .fullscreen .github-link .constName {
-  color: #43d9ad;
+  color: var(--color-accent-blumarine);
 }
 .fullscreen__game {
   position: relative;
@@ -1295,7 +1341,7 @@ body {
   padding: 15px 32px;
   color: var(--color-lines);
   border-right: 1px solid var(--color-lines);
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .header__list-item:hover {
   cursor: pointer;
@@ -1322,6 +1368,7 @@ body {
 }
 .header__contact:hover {
   background-color: var(--color-primary-darkBlue);
+  border-radius: 0 8px 0 0;
 }
 .header .header__list-item:nth-child(n+3) {
   border-right: 0px solid var(--color-lines);
@@ -1494,7 +1541,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: var(--color-secondaty-white);
+  color: var(--color-text-snake);
   row-gap: 20px;
 }
 .snakeGame__state {
@@ -1542,7 +1589,7 @@ body {
 }
 .snakeGame__arrows-item {
   padding: 10px 20px;
-  background-color: var(--color-primary-black);
+  background-color: var(--color-buttons-snake);
   border: 1px solid var(--color-lines);
   width: -webkit-fit-content;
   width: -moz-fit-content;

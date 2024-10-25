@@ -1,6 +1,7 @@
 const switchbtn = document.getElementById("themeBtn");
 const root = document.querySelector(':root');
 const body = document.querySelector('body');
+const snakeGameScoreImg = document.querySelectorAll('.snakeGame__score-item');
 
 function addButton(){
     const bodyInner = document.querySelector('.body_inner');
@@ -42,10 +43,16 @@ const onSwitchBtnClick = () => {
         body.style.backgroundImage = 'url(./src/images/background/protruding-squares-light.svg)';
         imgPath.setAttribute("src", "./src/images/icons/theme/moon.png");
         setScrollbarColor('#ffffff','#607b96');
+        snakeGameScoreImg.forEach(item => {
+            item.style.filter = 'brightness(0.1)';
+        });
     } else {
         body.style.backgroundImage = 'url(./src/images/background/protruding-squares.svg)';
         imgPath.setAttribute("src", "./src/images/icons/theme/sun.png");
         setScrollbarColor('#607b96','#011627');
+        snakeGameScoreImg.forEach(item => {
+            item.style.filter = 'brightness(1)';
+        });
     }
 }
 
@@ -64,9 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
         root.classList.add('dark');
         document.body.style.backgroundImage = 'url(./src/images/background/protruding-squares-light.svg)';
         imgPath.setAttribute("src", "./src/images/icons/theme/moon.png");
+        setScrollbarColor('#ffffff','#607b96');
+        snakeGameScoreImg.forEach(item => {
+            item.style.filter = 'brightness(0.1)';
+        });
     } else {
         root.classList.remove('dark');
         document.body.style.backgroundImage = 'url(./src/images/background/protruding-squares.svg)';
         imgPath.setAttribute("src", "./src/images/icons/theme/sun.png");
+        setScrollbarColor('#607b96','#011627');
     }
 });

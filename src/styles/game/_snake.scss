@@ -60,7 +60,7 @@
         @include flex-center-column();
         justify-content: start;
         align-items: center;
-        color: var(--color-secondaty-white);
+        color: var(--color-text-snake);
         row-gap: 20px;
     }
 
@@ -82,7 +82,7 @@
 
     &__arrows-item {
         padding: 10px 20px;
-        background-color: var(--color-primary-black);
+        background-color: var(--color-buttons-snake);
         border: 1px solid var(--color-lines);
         width: fit-content;
         border-radius: var(--border8);
