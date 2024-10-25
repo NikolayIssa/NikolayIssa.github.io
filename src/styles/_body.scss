@@ -80,3 +80,20 @@ body {
     -moz-box-shadow: 0px 0px 76px -6px rgba(255, 255, 255, 0.2);
     box-shadow: 0px 0px 100px -6px rgba(255, 255, 255, 0.2);
 }
+
+.theme-switcher {
+    position: absolute;
+    color: white;
+    width: 50px;
+    aspect-ratio: 1;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-secondaty-white);
+    border: 2px solid var(--color-primary-black);
+    border-radius: 50%;
+
+    button {
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -13,6 +13,9 @@
 }
 
 @media (width<1000px) {
+    body {
+        align-items: start;
+    }
     .header {
         display: none;
     }

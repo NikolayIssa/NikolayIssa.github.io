@@ -5,10 +5,10 @@
     height: 55px;
     font-size: var(--font-lables16);
     border-bottom: 1px solid var(--color-lines);
-    padding-inline: 22px;
+    padding-left: 22px;
     column-gap: 155px;
     text-wrap: nowrap;
-
+    z-index: 3;
     &__inner {
         display: flex;
         column-gap: 155px;
@@ -34,15 +34,20 @@
         }
 
         .checked {
-            border-bottom: 3px solid var(--color-accent-orange);
+            border-bottom: 4px solid var(--color-accent-orange);
+            margin-bottom: -1px;
         }
     }
 
     &__contact {
         border-left: 1px solid var(--color-lines);
         height: 100%;
-        padding-left: 22px;
+        padding-inline: 22px;
         @include flex-center-column();
+
+        &:hover {
+            background-color: var(--color-primary-darkBlue);
+        }
     }
 
     .header__list-item:nth-child(n + 3) {
@@ -93,9 +98,9 @@
     }
 
     &__link {
-        color: white;
+        color: var(--color-secondaty-white);
         &:visited {
-            color: white;
+            color: var(--color-secondaty-white);
         }
     }
 }

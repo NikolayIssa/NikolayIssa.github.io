@@ -46,6 +46,9 @@
   --color-accent-blumarine: #43d9ad;
   --color-accent-peach: #e99287;
   --color-accent-pink: #c98bdf;
+  --color-gradient-snake: #1755531f;
+  --color-gradient-snake-second: #43d9ad22;
+  --color-border-color: #0c1616;
   --color-lines: #1e2d3d;
   --color-btn: #1c2b3a;
   --font-headline62: 62px;
@@ -57,6 +60,21 @@
   --ff-fira-bold: "fira-bold";
   --border8: 8px;
   --border2: 2px;
+  color-scheme: light;
+}
+
+.dark {
+  --color-primary-blue: #ffffff;
+  --color-primary-black: #6f6f6f;
+  --color-primary-darkBlue: #e8e8e8;
+  --color-secondaty-white: #333333;
+  --color-secondaty-gray: #000000;
+  --color-gradient-snake: #00000079;
+  --color-gradient-snake-second: #43d9ac;
+  --color-border-color: #43d9ac;
+  --color-lines: #43d9ad;
+  --color-btn: #d4d4d4;
+  color-scheme: dark;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -172,6 +190,22 @@ body {
   pointer-events: none; /* Блок не мешает кликам по странице */
   -webkit-box-shadow: 0px 0px 76px -6px rgba(255, 255, 255, 0.2);
   box-shadow: 0px 0px 100px -6px rgba(255, 255, 255, 0.2);
+}
+
+.theme-switcher {
+  position: absolute;
+  color: white;
+  width: 50px;
+  aspect-ratio: 1;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-secondaty-white);
+  border: 2px solid var(--color-primary-black);
+  border-radius: 50%;
+}
+.theme-switcher button {
+  width: 100%;
+  height: 100%;
 }
 
 .about-me {
@@ -322,7 +356,7 @@ body {
   line-height: 0;
 }
 .about-me__tab-close:hover svg * {
-  fill: white;
+  fill: var(--color-secondaty-white);
 }
 .about-me__main-wrapper {
   display: -webkit-box;
@@ -822,7 +856,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   row-gap: 10px;
-  color: white;
+  color: var(--color-secondaty-white);
 }
 .feedback__form-item label {
   color: var(--color-secondaty-gray);
@@ -849,7 +883,7 @@ body {
 }
 .feedback__button {
   background-color: var(--color-btn);
-  color: white;
+  color: var(--color-secondaty-white);
   padding: 10px 14px;
   border-radius: var(--border8);
   width: -webkit-fit-content;
@@ -1214,11 +1248,12 @@ body {
   height: 55px;
   font-size: var(--font-lables16);
   border-bottom: 1px solid var(--color-lines);
-  padding-inline: 22px;
+  padding-left: 22px;
   -webkit-column-gap: 155px;
      -moz-column-gap: 155px;
           column-gap: 155px;
   text-wrap: nowrap;
+  z-index: 3;
 }
 .header__inner {
   display: -webkit-box;
@@ -1267,12 +1302,13 @@ body {
   opacity: 1;
 }
 .header__list .checked {
-  border-bottom: 3px solid var(--color-accent-orange);
+  border-bottom: 4px solid var(--color-accent-orange);
+  margin-bottom: -1px;
 }
 .header__contact {
   border-left: 1px solid var(--color-lines);
   height: 100%;
-  padding-left: 22px;
+  padding-inline: 22px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1283,6 +1319,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+.header__contact:hover {
+  background-color: var(--color-primary-darkBlue);
 }
 .header .header__list-item:nth-child(n+3) {
   border-right: 0px solid var(--color-lines);
@@ -1346,10 +1385,10 @@ body {
   border-bottom: 1px solid var(--color-lines);
 }
 .header-mobile__link {
-  color: white;
+  color: var(--color-secondaty-white);
 }
 .header-mobile__link:visited {
-  color: white;
+  color: var(--color-secondaty-white);
 }
 
 .show {
@@ -1360,9 +1399,9 @@ body {
   width: 530px;
   height: 525px;
   background: rgb(23, 85, 83);
-  background: linear-gradient(167deg, rgb(23, 85, 83) 0%, rgba(67, 217, 173, 0.1320903361) 100%);
+  background: linear-gradient(167deg, var(--color-gradient-snake) 0%, var(--color-gradient-snake-second) 100%);
   border-radius: var(--border8);
-  border: 1px solid #0c1616;
+  border: 1px solid var(--color-border-color);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1375,7 +1414,7 @@ body {
 .snakeGame__field {
   position: relative;
   border-radius: 0 0 8px 8px;
-  background-color: var(--color-primary-darkBlue);
+  background-color: #011221;
 }
 .snakeGame__field::after {
   content: "";
@@ -1607,6 +1646,11 @@ body {
   }
 }
 @media (width < 1000px) {
+  body {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+  }
   .header {
     display: none;
   }

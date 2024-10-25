@@ -106,7 +106,7 @@
             line-height: 0;
 
             &:hover svg * {
-                fill: white;
+                fill: var(--color-secondaty-white);
             }
         }
     }

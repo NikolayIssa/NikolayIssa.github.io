@@ -2,9 +2,9 @@
     width: 530px;
     height: 525px;
     background: rgb(23, 85, 83);
-    background: linear-gradient(167deg, rgb(23 85 83 / 100%) 0%, rgba(67, 217, 173, 0.1320903361) 100%);
+    background: linear-gradient(167deg, var(--color-gradient-snake) 0%, var(--color-gradient-snake-second) 100%);
     border-radius: var(--border8);
-    border: 1px solid #0c1616;
+    border: 1px solid var(--color-border-color);
     display: flex;
     padding: 35px 30px;
     column-gap: 24px;
@@ -12,7 +12,7 @@
     &__field {
         position: relative;
         border-radius: 0 0 8px 8px;
-        background-color: var(--color-primary-darkBlue);
+        background-color: #011221;
         &::after {
             content: "";
             position: absolute;
