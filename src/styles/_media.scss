@@ -15,7 +15,13 @@
 @media (width<1000px) {
     body {
         align-items: start;
+        overflow-x: hidden;
     }
+
+    .mouse-light {
+        display: none;
+    }
+
     .header {
         display: none;
     }
@@ -94,12 +100,13 @@
 
     .about-me__main {
         min-width: 100%;
+        border-bottom: 1px solid var(--color-lines);
+        border-right: 0px solid var(--color-lines);
+        height: fit-content;
     }
 
     .about-me__info-header,
     .about-me__span,
-    .about-me__skills,
-    .about-me__accordeon:nth-last-child(1),
     .about-me__contacts-info,
     .about-me__contacts {
         display: none;
@@ -154,6 +161,11 @@
     .feedback__form-item textarea {
         min-width: 10px;
         width: 100%;
+    }
+
+    .theme-switcher {
+        position: fixed;
+        opacity: 0.5;
     }
 }
 

@@ -30,7 +30,7 @@ body {
     @include flex-center-row;
     justify-content: center;
     background-image: url(./src/images/background/protruding-squares.svg);
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
     cursor: none;
 }
@@ -91,7 +91,7 @@ body {
     background-color: var(--color-secondaty-white);
     border: 2px solid var(--color-primary-black);
     border-radius: 50%;
-
+    z-index: 10;
     button {
         width: 100%;
         height: 100%;

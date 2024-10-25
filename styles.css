@@ -123,7 +123,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   background-image: url(./src/images/background/protruding-squares.svg);
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   cursor: none;
 }
@@ -205,6 +205,7 @@ body {
   background-color: var(--color-secondaty-white);
   border: 2px solid var(--color-primary-black);
   border-radius: 50%;
+  z-index: 10;
 }
 .theme-switcher button {
   width: 100%;
@@ -1697,6 +1698,10 @@ body {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
+    overflow-x: hidden;
+  }
+  .mouse-light {
+    display: none;
   }
   .header {
     display: none;
@@ -1777,11 +1782,14 @@ body {
   }
   .about-me__main {
     min-width: 100%;
+    border-bottom: 1px solid var(--color-lines);
+    border-right: 0px solid var(--color-lines);
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
   .about-me__info-header,
   .about-me__span,
-  .about-me__skills,
-  .about-me__accordeon:nth-last-child(1),
   .about-me__contacts-info,
   .about-me__contacts {
     display: none;
@@ -1829,6 +1837,10 @@ body {
   .feedback__form-item textarea {
     min-width: 10px;
     width: 100%;
+  }
+  .theme-switcher {
+    position: fixed;
+    opacity: 0.5;
   }
 }
 @media (width < 700px) {
