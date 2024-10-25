@@ -22,7 +22,7 @@
     if (input.value.length > 0) {
     // Очистить текстовое поле и вернуть иконку search.svg
     input.value = '';
-    icon.src = './public/icons/search_icons/search.svg';
+    icon.src = './src-weather/public/icons/search_icons/search.svg';
     }
     });
 
