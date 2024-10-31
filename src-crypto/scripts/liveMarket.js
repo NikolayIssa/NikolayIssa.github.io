@@ -1,6 +1,6 @@
 document.addEventListener('click', (event)=>{
     if (event.target.classList.contains("close") || event.target.classList.contains("modal__market")){
-        console.log('click');
+        // console.log('click');
         CloseModal();
     }
 
