@@ -109,23 +109,17 @@ ArrayDataInputSkills(SkillsArr,".about-me__skills")
 
 const arrowDiscription = document.querySelector('.about-me__discription-arrow');
 
-
-let openInfoArrow = () => {
-    arrowDiscription.style.transform = 'rotate(0deg)';
-}
-
 document.addEventListener('click', (event) => {
     if (event.target.classList.contains('about-me__discription-arrow')) {
-        event.target.style.transform = 'rotate(0deg)';
+        
         const blockToOpen = event.target.parentNode;
-        console.log(blockToOpen);
 
         if (blockToOpen.style.height != '30px') {
             blockToOpen.style.height = '30px'; // Скрываем блок
             event.target.style.transform = 'rotate(90deg)';
         } else {
+            event.target.style.transform = 'rotate(0deg)';
             blockToOpen.style.height = blockToOpen.scrollHeight + 'px'; // Показываем блок
         }
-        openInfoArrow();
     }
 });
