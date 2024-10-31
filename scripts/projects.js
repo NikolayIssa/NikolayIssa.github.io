@@ -48,6 +48,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2,4],
         link:'./index-resto.html',
+        maket:'https://www.figma.com/design/Bm49cDwwyNUlCzBEVIQzLQ/RestoApp.-1-sprint.-4-task?node-id=6027-1602&node-type=canvas&t=KYUGwmFwpmUJPeMl-0',
         category: 'html,js,css',
     },
     {
@@ -57,6 +58,7 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2,4],
         link:'./index-weather.html',
+        maket:'https://www.figma.com/design/60Iap3oS9KpQ6XPuBK8CZ2/Weather-App.-1-sprint.-4-task?node-id=4008-9369&node-type=canvas&t=zMgB7CT7P2ElrwHt-0',
         category: 'html,js,css',
     },
     {
@@ -66,8 +68,19 @@ document.querySelectorAll('.projects__checkbox').forEach((checkbox) => {
         isSubcomponentNeed: true,
         subcomponentsnum: [1,2],
         link:'./index-organic.html',
+        maket:'https://www.figma.com/design/GZq6KVcGwjMuUluO20l73p/organic-figma-template-free-version?t=y99VBLSZd1YN16qD-0',
         category: 'html,css',
     },
+    {
+      title:'_crypto-app',
+      image:'./src/images/sites-examples/crypto.png',
+      discription:'Сайт сверстан с макета для практики.',
+      isSubcomponentNeed: true,
+      subcomponentsnum: [1,2,4,0],
+      link:'./index-crypto.html',
+      maket:'https://www.figma.com/design/MXBe6O0vYuieKnzRjMQPQI/Figma-UI-kit---Cryptocurrency-Dashboard-V2-(Community)-(Community)?node-id=2603-5&node-type=frame&t=LQuEdB1xVWr1Hh6A-0',
+      category: 'html,css,js,sass',
+  },
 ]
 
 const renderItems = (dataArray, listSelector) => {
@@ -119,7 +132,10 @@ const renderItems = (dataArray, listSelector) => {
                         <p>
                         ${data.discription}
                         </p>
+                        <div class="projects-examples__wrapper">
                         <a href=${data.link} target="_blank">view-project</a>
+                        <a href=${data.maket} target="_blank">figma</a>
+                        </div>
                       </div>
                        <a href=${data.link} target="_blank" class="hidden-link"></a>
                     </div>

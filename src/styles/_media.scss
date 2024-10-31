@@ -169,11 +169,28 @@
     }
 }
 
-@media (width<700px) {
+@media (width<726px) {
     .projects-examples__list {
         overflow-y: auto;
         height: fit-content;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (width<370px) {
+    .projects-examples__wrapper {
+        column-gap: 5px;
+    }
+}
+
+@media (width<350px) {
+    .projects-examples__wrapper {
+        flex-direction: column;
+        row-gap: 5px;
+    }
+
+    .projects-examples__about {
+        row-gap: 10px;
     }
 }

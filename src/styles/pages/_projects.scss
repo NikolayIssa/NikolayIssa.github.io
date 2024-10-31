@@ -101,7 +101,7 @@
 
         &:hover {
             opacity: 1;
-            margin-top: -25px;
+            margin-top: -15px;
         }
     }
 
@@ -162,7 +162,7 @@
         background-color: var(--color-primary-darkBlue);
         padding: 31px;
         @include flex-center-column();
-        row-gap: 20px;
+        row-gap: 40px;
         p {
             font-size: var(--font-body18);
             color: var(--color-secondaty-gray);
@@ -181,5 +181,10 @@
                 background-color: rgba(87, 87, 87, 0.373);
             }
         }
+    }
+
+    &__wrapper {
+        display: flex;
+        column-gap: 20px;
     }
 }
