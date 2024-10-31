@@ -1,5 +1,5 @@
 export function scrollButtonsListeners(listItems){
-    console.log('done');
+    // console.log('done');
     // const list = document.querySelector('.slider__items-inner');
     const list = document.querySelector(listItems);
     const prevButton = document.querySelector('.--left');

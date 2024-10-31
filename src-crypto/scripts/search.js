@@ -75,21 +75,21 @@ document.querySelectorAll('.portfolio__list-img').forEach((imgContainer) => {
 
 document.addEventListener('click', (event)=>{
    if (event.target.classList.contains('portfolio__list-delete-coin')){
-       console.log('222');
+    //    console.log('222');
        const deleteImg = document.querySelector('.portfolio__list-delete-coin')
        const articleToDelete = event.target.closest('.portfolio__list-item');
        const nameDefault = articleToDelete.getAttribute("data-name");
 
            // Логируем для отладки
-           console.log(`Попытка удалить символ: ${nameDefault}`);
-           console.log(`Текущий массив:`, symbolsLiked);
+        //    console.log(`Попытка удалить символ: ${nameDefault}`);
+        //    console.log(`Текущий массив:`, symbolsLiked);
 
            // Удаляем имя из массива symbolsLiked
            const index = symbolsLiked.indexOf(nameDefault); // Находим индекс символа
            if (index > -1) {
                symbolsLiked.splice(index, 1); // Удаляем элемент из массива
-               console.log(`Удалено: ${nameDefault}`);
-               console.log(`Обновленный массив:`, symbolsLiked);
+            //    console.log(`Удалено: ${nameDefault}`);
+            //    console.log(`Обновленный массив:`, symbolsLiked);
 
                // Сохраните обновленный массив в localStorage
                saveSymbolsToLocalStorage();
@@ -97,7 +97,7 @@ document.addEventListener('click', (event)=>{
                // Также, при необходимости, можете удалить элемент из DOM
                articleToDelete.remove(); // Удаляем элемент из DOM
            } else {
-               console.log(`${nameDefault} не найден в массиве.`);
+            //    console.log(`${nameDefault} не найден в массиве.`);
            }
     }
 });

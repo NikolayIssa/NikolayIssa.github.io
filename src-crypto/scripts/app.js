@@ -5,7 +5,7 @@ import  {symbolsLiked} from "./search.js";
 
 export let monthlyData = [];
 let likedOne = [...symbolsLiked];
-console.log(likedOne);
+// console.log(likedOne);
 
 export async function fetchCryptoData(symbol) {
     const response = await fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${symbol}&tsym=USD&limit=30`);
@@ -61,7 +61,7 @@ async function renderCryptoBlocks() {
     const promises = symbols.map(async (symbol, index) => {
         try {
             const data = await fetchCryptoData(symbol);
-            console.log(data);
+            // console.log(data);
             const latestData = data[data.length - 1];
             const prevData = data[data.length - 2];
             const price = latestData.close;
@@ -151,7 +151,7 @@ export async function renderPortfolio() {
                     />
                     
                     <img
-                        src="./public/src/img/icons/close-circle-fill.svg" alt="${symbol}"
+                        src="./src-crypto/public/src/img/icons/close-circle-fill.svg" alt="${symbol}"
                         alt="${symbol}"
                         class="portfolio__list-delete-coin"
                         data-name="${symbol}"
