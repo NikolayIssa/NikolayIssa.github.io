@@ -292,7 +292,6 @@ searchBtn.addEventListener('click', function() {
             list5day.style.display = 'none';
             show5DaysButton.classList.remove('select');
             dayButton.classList.add('select');
-            forecastList.scrollLeft = 0;
             setTimeout(scrollButtonsListeners('.slider__items-inner'),100);
         });
         
@@ -301,10 +300,9 @@ searchBtn.addEventListener('click', function() {
             list5day.style.display = 'grid';
             dayButton.classList.remove('select');
             show5DaysButton.classList.add ('select');
-            list5day.scrollLeft = 0;
             setTimeout(scrollButtonsListeners('.days5'),100);
         });
-        
+
         function renderWeatherData(data) {
                 const ulElement = document.querySelector('.slider__items-inner');
                 const ulElement5days = document.querySelector('.days5');
@@ -488,14 +486,21 @@ searchBtn.addEventListener('click', function() {
             }
             }
 
-            nextButton.addEventListener('click', () => {
+            nextButton.addEventListener('click', (event) => {
+
             if (scrollPosition < list.scrollWidth - list.clientWidth) {
                 scrollPosition += itemWidth; // Прокручиваем на 1 элемент вперед
                 list.scrollTo({
                     left: scrollPosition,
                     behavior: 'smooth'
                 });
+
+                console.log(scrollPosition + 'right');
+                console.log(list.scrollWidth)
+                console.log(list.clientWidth);
                 updateButtons();
+                } else {
+                    console.log('pidor')
                 }
             });
 
@@ -506,6 +511,8 @@ searchBtn.addEventListener('click', function() {
                         left: scrollPosition,
                         behavior: 'smooth'
                     });
+
+                    console.log(scrollPosition)
                     updateButtons();
                 }
             });
