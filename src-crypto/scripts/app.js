@@ -1,11 +1,9 @@
 import { scrollButtonsListeners } from './slider.js';
 import { CreateOptions } from './createOptins.js';
-import { fetchCryptoHourlyData } from './mainChart.js';
 import  {symbolsLiked} from "./search.js";
 
 export let monthlyData = [];
-let likedOne = [...symbolsLiked];
-// console.log(likedOne);
+
 
 export async function fetchCryptoData(symbol) {
     const response = await fetch(`https://min-api.cryptocompare.com/data/v2/histoday?fsym=${symbol}&tsym=USD&limit=30`);
@@ -119,7 +117,9 @@ async function renderCryptoBlocks() {
 }
 
 export async function renderPortfolio() {
+    let likedOne = [...symbolsLiked];
     const container = document.querySelector(".portfolio__list");
+    container.innerHTML = '';
     const symbols = [...likedOne]; // Необходимые символы криптовалют
     const imageData = await fetchSelectedCryptoIcons(symbols);
     // Сохраняем все промисы в массив
@@ -195,7 +195,8 @@ function renderChart(data, chartId) {
                 borderColor: getRandomColor(),
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
                 fill: false,
-                pointStyle: false
+                pointStyle: false,
+                borderWidth: 2
             }]
         },
         options: {
@@ -233,9 +234,12 @@ function getRandomColor(opacity = 1) {
 }
 
 document.addEventListener("DOMContentLoaded", renderCryptoBlocks);
-document.addEventListener("DOMContentLoaded", renderPortfolio);
 
-fetchCryptoHourlyData("BTC", 1);
+if (symbolsLiked.length > 0){
+    document.addEventListener("DOMContentLoaded", renderPortfolio);
+}
+
+
 
 
 

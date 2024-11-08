@@ -161,6 +161,7 @@ legend {
   --padding30: 30px;
   --padding-inline30: 30px;
   --blockWidth: calc(360px * 4);
+  --card-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .dark {
@@ -170,6 +171,8 @@ legend {
   --color-blue: #3a6ff8;
   --color-dark-gray: #e1e1e1;
   --color-grey-main: #b4bbc4;
+
+  --card-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 1500'%3E%3Cdefs%3E%3Crect fill='none' stroke-width='200' id='a' x='-400' y='-300' width='800' height='600'/%3E%3C/defs%3E%3Cg transform='scale(0.28)' style='transform-origin:center'%3E%3Cg transform='rotate(135 0 0)' style='transform-origin:center'%3E%3Cg transform='rotate(-160 0 0)' style='transform-origin:center'%3E%3Cg transform='translate(1000 750)'%3E%3Cuse stroke='%23E1E1E1' href='%23a' transform='rotate(10 0 0) scale(1.1)'/%3E%3Cuse stroke='%23dae3db' href='%23a' transform='rotate(20 0 0) scale(1.2)'/%3E%3Cuse stroke='%23d4e5d4' href='%23a' transform='rotate(30 0 0) scale(1.3)'/%3E%3Cuse stroke='%23cde7ce' href='%23a' transform='rotate(40 0 0) scale(1.4)'/%3E%3Cuse stroke='%23c7e9c7' href='%23a' transform='rotate(50 0 0) scale(1.5)'/%3E%3Cuse stroke='%23c0ebc1' href='%23a' transform='rotate(60 0 0) scale(1.6)'/%3E%3Cuse stroke='%23baedba' href='%23a' transform='rotate(70 0 0) scale(1.7)'/%3E%3Cuse stroke='%23b3efb4' href='%23a' transform='rotate(80 0 0) scale(1.8)'/%3E%3Cuse stroke='%23adf1ad' href='%23a' transform='rotate(90 0 0) scale(1.9)'/%3E%3Cuse stroke='%23a6f3a7' href='%23a' transform='rotate(100 0 0) scale(2)'/%3E%3Cuse stroke='%23a0f5a0' href='%23a' transform='rotate(110 0 0) scale(2.1)'/%3E%3Cuse stroke='%2399f79a' href='%23a' transform='rotate(120 0 0) scale(2.2)'/%3E%3Cuse stroke='%2393f993' href='%23a' transform='rotate(130 0 0) scale(2.3)'/%3E%3Cuse stroke='%238cfb8d' href='%23a' transform='rotate(140 0 0) scale(2.4)'/%3E%3Cuse stroke='%2386fd86' href='%23a' transform='rotate(150 0 0) scale(2.5)'/%3E%3Cuse stroke='%237FFF80' href='%23a' transform='rotate(160 0 0) scale(2.6)'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -360,6 +363,9 @@ body {
 .header__form-search {
   width: 24px;
   height: 24px;
+}
+.header__form-search svg {
+  fill: var(--color-white);
 }
 .header__account {
   display: -webkit-box;
@@ -614,6 +620,28 @@ body {
   padding: var(--padding30);
   position: relative;
 }
+.portfolio__list-item .layout {
+  position: absolute;
+  inset: 0;
+  align-content: center;
+  text-align: center;
+  padding-block: 24px;
+  border-radius: var(--border15);
+  margin-bottom: 0;
+  background-color: #000000bb;
+  animation: fadeinfadeout 4s ease infinite;
+}
+@keyframes fadeinfadeout {
+  0% {
+    background-color: var(--color-dark-gray);
+  }
+  50% {
+    background-color: var(--color-grey-main);
+  }
+  100% {
+    background-color: var(--color-dark-gray);
+  }
+}
 .portfolio .portfolio__list-img:hover .portfolio__list-delete-coin {
   display: block; /* Показываем иконку при наведении на контейнер */
 }
@@ -635,7 +663,8 @@ body {
 }
 .portfolio__card {
   background-color: var(--color-dark-gray);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: var(--card-default);
+  background-position: center;
   width: 100%;
   color: var(--color-white);
   padding: 20px;
@@ -893,6 +922,12 @@ body {
   -webkit-column-gap: 10px;
   -moz-column-gap: 10px;
   column-gap: 10px;
+  transition: 200ms;
+}
+
+.chart-main__date .active {
+  border: 1px solid var(--color-blue);
+  transition: 200ms;
 }
 .chart-main__market {
   background-color: var(--color-dark-gray);
@@ -1067,7 +1102,6 @@ body {
 .onload-block_m30 {
   position: absolute;
   inset: 0;
-  min-width: 100%;
   min-height: 100%;
   background: linear-gradient(280deg, var(--color-dark-gray), var(--color-grey-main));
   background-size: 120% 120%;
@@ -1075,8 +1109,9 @@ body {
   animation: gradient-animation 4s ease infinite;
   border-radius: var(--border15);
 }
+
 .onload-block_m30 {
-  margin-left: 30px;
+  margin-inline: 30px;
 }
 
 @-webkit-keyframes gradient-animation {

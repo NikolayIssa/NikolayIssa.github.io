@@ -1,3 +1,5 @@
+import {renderPortfolio} from "./app.js";
+
 const searchInput = document.getElementById('header-search');
 const suggestionsContainer = document.getElementById('suggestions');
 const tipoDobavil = document.querySelector('.header__form-search');
@@ -8,6 +10,8 @@ export function saveSymbolsToLocalStorage() {
     localStorage.setItem('symbolsLiked', JSON.stringify(symbolsLiked));
 }
 
+let debounceTimeout
+
 searchInput.addEventListener('input', async (event) => {
     const query = event.target.value.trim();
 
@@ -16,12 +20,16 @@ searchInput.addEventListener('input', async (event) => {
         return;
     }
 
-    // Получение данных о криптовалютах из API
-    const response = await fetch(`https://api.coingecko.com/api/v3/search?query=${query}`);
-    const data = await response.json();
+    clearTimeout(debounceTimeout);
 
-    // Отображение подсказок
-    displaySuggestions(data.coins);
+    debounceTimeout = setTimeout(async () => {
+        // Получение данных о криптовалютах из API
+        const response = await fetch(`https://api.coingecko.com/api/v3/search?query=${query}`);
+        const data = await response.json();
+
+        // Отображение подсказок
+        displaySuggestions(data.coins);
+    }, 500); // Задержка в миллисекундах (300 мс)
 });
 
 function displaySuggestions(coins) {
@@ -58,7 +66,11 @@ document.addEventListener('click', (event) => {
 });
 
 tipoDobavil.addEventListener('click', ()=>{
-    location.reload();
+    symbolsLiked = JSON.parse(localStorage.getItem('symbolsLiked'));
+    console.log(symbolsLiked);
+    renderPortfolio();  
+    console.log('gay')
+    // location.reload();
 })
 
 document.querySelectorAll('.portfolio__list-img').forEach((imgContainer) => {
