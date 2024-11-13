@@ -1,6 +1,4 @@
 export function scrollButtonsListeners(listItems){
-    // console.log('done');
-    // const list = document.querySelector('.slider__items-inner');
     const list = document.querySelector(listItems);
     const prevButton = document.querySelector('.--left');
     const nextButton = document.querySelector('.--right');
@@ -29,24 +27,50 @@ export function scrollButtonsListeners(listItems){
         }
         }
 
+        function smoothScroll(targetPosition) {
+            const startPosition = list.scrollLeft;
+            const distance = targetPosition - startPosition;
+            const duration = 400; // Длительность анимации в миллисекундах
+            let startTime = null;
+    
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                list.scrollLeft = run;
+    
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+    
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+    
+            requestAnimationFrame(animation);
+        }
+
         nextButton.addEventListener('click', () => {
-        if (scrollPosition < list.scrollWidth - list.clientWidth) {
-            scrollPosition += itemWidth; // Прокручиваем на 1 элемент вперед
-            list.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-            updateButtons();
+            const remainingScroll = list.scrollWidth - list.clientWidth - scrollPosition;
+            const scrollAmount = Math.min(itemWidth, remainingScroll);
+    
+            if (scrollAmount > 0) {
+                scrollPosition += scrollAmount;
+                smoothScroll(scrollPosition);
+                updateButtons();
             }
         });
-
+    
         prevButton.addEventListener('click', () => {
-            if (scrollPosition > 0) {
-                scrollPosition -= itemWidth; // Прокручиваем на 1 элемент назад
-                list.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
-                });
+            const scrollAmount = Math.min(itemWidth, scrollPosition);
+    
+            if (scrollAmount > 0) {
+                scrollPosition -= scrollAmount;
+                smoothScroll(scrollPosition);
                 updateButtons();
             }
         });

@@ -423,7 +423,6 @@ body {
 
 .slider__items-wrapper {
     width: 83.33333333333333%;
-    scroll-behavior: smooth;
     mask: linear-gradient(90deg, #000 95%, transparent);
 }
 
@@ -431,11 +430,10 @@ body {
     width: auto;
     display: grid;
     column-gap: var(--gap16);
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr;
     grid-template-rows: repeat(1, 1fr);
     grid-auto-flow: column;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 .days5 {

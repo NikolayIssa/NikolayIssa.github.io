@@ -178,7 +178,6 @@ legend {
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
-  scroll-behavior: smooth;
   scrollbar-width: auto;
   scrollbar-color: #1b2028 #31353f;
 }
@@ -578,7 +577,6 @@ body {
   grid-template-rows: repeat(1, 1fr);
   grid-auto-flow: column;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 .crypto-blocks-wrapper > *:nth-child(1) {
   -ms-grid-row: 1;

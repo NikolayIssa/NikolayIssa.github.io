@@ -27,6 +27,8 @@ async function getData() {
 
         function errorCallback(error) {
             console.log('Ошибка при получении геопозиции: ' + error.message);
+            alert('Важно! Если вы откажетесь от предоставления геолокации, приложение автоматически определит его как Москва.');
+            alert('Но вы можете найти свой город в поиске!');
             fetchWeatherData('Москва'); // По умолчанию используем "Москва"
         }
 
@@ -46,6 +48,7 @@ async function fetchWeatherData(city) {
             throw new Error('Ошибка запроса');
         }
         const data = await response.json();
+        console.log(data)
         SomeTest(data);
         setPressureInfo(data);
         setHumidityInfo(data);
@@ -60,26 +63,19 @@ async function fetchWeatherData(city) {
         loadingMessage.style.display = 'none'; // Скрываем сообщение "Загрузка..."
     }
 }
-
 getData();
 
-const input = document.getElementById('header-search');
-const searchBtn = document.getElementById('search-icon');
+    const input = document.getElementById('header-search');
+    const searchBtn = document.getElementById('search-icon');
 
-searchBtn.addEventListener('click', function() {
-    const inputValue = input.value.trim(); // Удаляем пробелы в начале и конце строки
-    fetchWeatherData(inputValue); // Передаем введенный город
-});
-
-
-
-
-
-
+    searchBtn.addEventListener('click', function() {
+        const inputValue = input.value.trim(); // Удаляем пробелы в начале и конце строки
+        fetchWeatherData(inputValue); // Передаем введенный город
+    });
 
     let SomeTest = (data) => {
-        const humidityItem = document.querySelector('.weather__city');
-        humidityItem.innerHTML = data.location.name;
+        const currentCity = document.querySelector('.weather__city');
+        currentCity.innerHTML = data.location.name;
         document.querySelector('.weather__state-text').innerHTML = data.current.condition.text;
         document.querySelector('.weather__temp-value').innerHTML = Math.floor(data.current.temp_c) + "&deg;";
         document.querySelector('.weather__feels-like').innerHTML = "Ощущается как " + Math.floor(data.current.feelslike_c) + "&deg;";
@@ -127,16 +123,20 @@ searchBtn.addEventListener('click', function() {
         let visibilityClass = '';
 
         if (visibilityValue <= 5) {
-        visibilityClass = 'Недостаточная';
-        } else if (visibilityValue > 5 && visibilityValue <= 30) {
+            visibilityClass = 'Недостаточная';
+        } 
+        else if (visibilityValue > 5 && visibilityValue <= 30) {
             visibilityClass = 'Нормальная';
-        } else if (visibilityValue > 30) {
+        } 
+        else if (visibilityValue > 30) {
             visibilityClass = 'Отличная';
-        } else {
+        } 
+        else {
         visibilityClass = 'Ошибка';;
         }
 
         const visibilityItem = document.querySelector('.visibility');
+
         visibilityItem.querySelector('.weather__details-value').textContent = `${visibilityValue} км`;
         visibilityItem.querySelector('.weather__details-range--substract').style.setProperty('--maskPosition', visibilityValue * 2.5 + '%');
         visibilityItem.querySelector('.weather__details-range-text').textContent = visibilityClass;
@@ -150,8 +150,8 @@ searchBtn.addEventListener('click', function() {
         function convertTo24Hour(time) {
             let [hours, minutes] = time.split(/[: ]/);
             const period = time.slice(-2).toUpperCase();
-          
             hours = parseInt(hours, 10);
+
             if (period === 'PM' && hours !== 12) {
               hours += 12;
             } else if (period === 'AM' && hours === 12) {
@@ -162,18 +162,16 @@ searchBtn.addEventListener('click', function() {
           }
 
           let calculatedSunrise = convertTo24Hour(sunrise);
-
           let calculatedSunset = convertTo24Hour(sunset);
 
           function calculateTimes(sunrise, sunset) {
-            const now = new Date(); // Текущее время
-        
-            // Преобразуем время рассвета и заката в объект Date
+            const now = new Date();
+
+            // Преобразуем время рассвета и заката в объект Date // Данные из API в формате AM/PM
             const [sunriseHours, sunriseMinutes] = sunrise.split(':').map(Number);
             const [sunsetHours, sunsetMinutes] = sunset.split(':').map(Number);
-        
+
             const today = now.toISOString().split('T')[0]; // Получаем сегодняшнюю дату (YYYY-MM-DD)
-        
             // Создаем объекты Date для рассвета и заката
             const sunriseTime = new Date(`${today}T${sunriseHours.toString().padStart(2, '0')}:${sunriseMinutes.toString().padStart(2, '0')}:00`);
             const sunsetTime = new Date(`${today}T${sunsetHours.toString().padStart(2, '0')}:${sunsetMinutes.toString().padStart(2, '0')}:00`);
@@ -182,43 +180,46 @@ searchBtn.addEventListener('click', function() {
             const timeSinceSunrise = now - sunriseTime;
             const timeUntilSunset = sunsetTime - now;
         
-            // Проверка: если закат уже был
-            const isSunsetPassed = timeUntilSunset < 0;
-        
             // Переводим миллисекунды в часы и минуты
             const hoursSinceSunrise = Math.floor(timeSinceSunrise / (1000 * 60 * 60));
             const minutesSinceSunrise = Math.floor((timeSinceSunrise % (1000 * 60 * 60)) / (1000 * 60));
-        
+
             const hoursUntilSunset = Math.floor(timeUntilSunset / (1000 * 60 * 60));
             const minutesUntilSunset = Math.floor((timeUntilSunset % (1000 * 60 * 60)) / (1000 * 60));
-        
+
+            // Проверка: если закат уже был
+            const isSunsetPassed = timeUntilSunset < 0; // Если время до заката меньше 0, значение true, иначе false
+            const isSunrisePassed = hoursSinceSunrise > 14; // Если время после рассвета больше 14, значение true, иначе false
+
+            // Считаем сколько осталось до рассвета
+            const timeBeforeSunriceHour = 24 - hoursSinceSunrise;
+            const timeBeforeSunriceMinute = 60 - minutesSinceSunrise;
+
             return {
                 timeSinceSunrise: `${hoursSinceSunrise} ч. и ${minutesSinceSunrise} мин.`,
+
+                timeUntilSunrice: `${timeBeforeSunriceHour} ч. и ${timeBeforeSunriceMinute} мин.`,
                 timeUntilSunset: `${hoursUntilSunset} ч. и ${minutesUntilSunset} мин.`,
-                isSunsetPassed // возвращаем флаг, был ли закат
+                isSunsetPassed, // возвращаем флаг, был ли закат;
+                isSunrisePassed, // возвращаем флаг, сколько прошло ли достаточно времени после рассвета;
             };
         }
         
         // Использование функции
         const result = calculateTimes(calculatedSunrise, calculatedSunset);
-        
+
         // Обновление DOM с проверкой на то, был ли закат
         document.querySelector('.sunrise .weather__details-value').textContent = convertTo24Hour(sunrise);
-        document.querySelector('.sunrise .range-text.time').textContent = result.timeSinceSunrise;
+        document.querySelector('.sunrise .range-text.time').textContent = result.isSunrisePassed ? `Осталось: ${result.timeUntilSunrice}`  : `Прошло: ${result.timeSinceSunrise}`;
         
         document.querySelector('.sunset .weather__details-value').textContent = convertTo24Hour(sunset);
-        document.querySelector('.sunset .range-text.time').textContent = result.isSunsetPassed 
-            ? 'Уже был' 
-            : `Осталось: ${result.timeUntilSunset}`;
-        
+        document.querySelector('.sunset .range-text.time').textContent = result.isSunsetPassed ? 'Уже был' : `Осталось: ${result.timeUntilSunset}`;
     }
     // Сила ветра
 
     let windIconChange = (data) => {
         let windWay = data.current.wind_dir;
         let windText = 'Направление ветра';
-
-        const windWaySource = document.querySelector('.windWay').src;
     
         let windWaySourceNew = './public/icons/icons_info/direction.svg'; // Путь по умолчанию
 
@@ -270,13 +271,12 @@ searchBtn.addEventListener('click', function() {
         // Присваиваем новый источник изображения элементу
         document.querySelector('.windWay').src = windWaySourceNew;
         document.querySelector('.weather__details-range-text[data-windway="forjs"]').textContent = windText;
-        }
+    }
     
     let setWindSpeed = (data) => {
         const windItem = document.querySelector('.wind');
         windItem.querySelector('.weather__details-value').textContent =  Math.floor((data.current.wind_kph * 10)/36)  + ' м/с';
     }
-
 
     let sliderOptions = (data) => {
 
@@ -307,17 +307,15 @@ searchBtn.addEventListener('click', function() {
                 const ulElement = document.querySelector('.slider__items-inner');
                 const ulElement5days = document.querySelector('.days5');
                 ulElement.innerHTML = ''; // Очищаем текущие элементы
-
                 data.forecast.forecastday.forEach((item) => {
                     
                     let maxDayTempo = Math.floor(item.day.maxtemp_c);
                     let minDayTempo = Math.floor(item.day.mintemp_c);
                     let formatDate = formatDateFromApi(item.date);
-
                     function formatDateFromApi(dateString) {
                         // Создаем объект Date на основе строки, которую возвращает API
                         const date = new Date(dateString);
-                    
+                        
                         // Массивы с днями недели и месяцами на русском языке
                         const daysOfWeek = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
                         const months = ['янв.', 'февр.', 'мар.', 'апр.', 'май', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
@@ -334,7 +332,7 @@ searchBtn.addEventListener('click', function() {
                     let timeSetter5Days = () => { //Вводим 5 дней в слайдер
                             const li = document.createElement('li');
                             li.classList.add('items-inner__item');
-    
+                        
                             const dateParagraph = document.createElement('p');
                             dateParagraph.classList.add('items-inner__item-p');
                             dateParagraph.textContent = formatDate; // Используем hourItem для получения времени
@@ -451,75 +449,86 @@ searchBtn.addEventListener('click', function() {
 
                 ButtonDataActive();
         }
-
         // Изначально отображаем данные за 24 часа
         renderWeatherData(data);
 
         let scrollButtonsListeners = (listItems) => {
 
-        // const list = document.querySelector('.slider__items-inner');
-        const list = document.querySelector(listItems);
-        const prevButton = document.querySelector('.--left');
-        const nextButton = document.querySelector('.--right');
-        const maskPosition = document.querySelector('.slider__items-wrapper');
-        const itemWidth = list.querySelector('li').offsetWidth + 16; // ширина элемента плюс отступ
-        let scrollPosition = 0;
-
+            const list = document.querySelector(listItems);
+            const prevButton = document.querySelector('.--left');
+            const nextButton = document.querySelector('.--right');
+            const maskPosition = document.querySelector('.slider__items-wrapper');
+            const itemWidth = list.querySelector('li').offsetWidth + 16; // ширина элемента плюс отступ
+            let scrollPosition = 0;
+        
             function updateButtons() {
-            // Если прокрутили до начала списка
-            if (scrollPosition <= 0) {
-                prevButton.classList.remove('active');
-                nextButton.classList.add('active');
-                maskPosition.style.setProperty("mask", "linear-gradient(90deg, #000 95%, transparent)");
-            } 
-            // Если прокрутили до конца списка
-            else if (scrollPosition >= list.scrollWidth - list.clientWidth) {
-                prevButton.classList.add('active');
-                nextButton.classList.remove('active');
-                maskPosition.style.setProperty("mask", "linear-gradient(270deg, #000 95%, transparent)");
-            } 
-            // В промежуточном состоянии
-            else {
-                prevButton.classList.add('active');
-                nextButton.classList.add('active');
-                maskPosition.style.setProperty("mask", "radial-gradient(circle, #000 90%, transparent 100%)");
-            }
-            }
-
-            nextButton.addEventListener('click', (event) => {
-
-            if (scrollPosition < list.scrollWidth - list.clientWidth) {
-                scrollPosition += itemWidth; // Прокручиваем на 1 элемент вперед
-                list.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
-                });
-
-                console.log(scrollPosition + 'right');
-                console.log(list.scrollWidth)
-                console.log(list.clientWidth);
-                updateButtons();
+                if (scrollPosition <= 0) {
+                    prevButton.classList.remove('active');
+                    nextButton.classList.add('active');
+                    maskPosition.style.setProperty("mask", "linear-gradient(90deg, #000 95%, transparent)");
+                } else if (scrollPosition >= list.scrollWidth - list.clientWidth) {
+                    prevButton.classList.add('active');
+                    nextButton.classList.remove('active');
+                    maskPosition.style.setProperty("mask", "linear-gradient(270deg, #000 95%, transparent)");
                 } else {
-                    console.log('pidor')
+                    prevButton.classList.add('active');
+                    nextButton.classList.add('active');
+                    maskPosition.style.setProperty("mask", "radial-gradient(circle, #000 90%, transparent 100%)");
                 }
-            });
-
-            prevButton.addEventListener('click', () => {
-                if (scrollPosition > 0) {
-                    scrollPosition -= itemWidth; // Прокручиваем на 1 элемент назад
-                    list.scrollTo({
-                        left: scrollPosition,
-                        behavior: 'smooth'
-                    });
-
-                    console.log(scrollPosition)
+            }
+        
+            function smoothScroll(targetPosition) {
+                const startPosition = list.scrollLeft;
+                const distance = targetPosition - startPosition;
+                const duration = 400; // Длительность анимации в миллисекундах
+                let startTime = null;
+        
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                    list.scrollLeft = run;
+        
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+        
+                function easeInOutQuad(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                }
+        
+                requestAnimationFrame(animation);
+            }
+        
+            nextButton.addEventListener('click', () => {
+                const remainingScroll = list.scrollWidth - list.clientWidth - scrollPosition;
+                const scrollAmount = Math.min(itemWidth, remainingScroll);
+        
+                if (scrollAmount > 0) {
+                    scrollPosition += scrollAmount;
+                    smoothScroll(scrollPosition);
                     updateButtons();
                 }
             });
-
-        updateButtons();
         
-        }
+            prevButton.addEventListener('click', () => {
+                const scrollAmount = Math.min(itemWidth, scrollPosition);
+        
+                if (scrollAmount > 0) {
+                    scrollPosition -= scrollAmount;
+                    smoothScroll(scrollPosition);
+                    updateButtons();
+                }
+            });
+        
+            updateButtons();
+        };
+        
+        
         setTimeout(scrollButtonsListeners('.slider__items-inner'),100);
     }
 
